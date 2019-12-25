@@ -1,0 +1,22 @@
+{
+    "name": "tdias25/cartola",
+    "description": "Pequeno wrapper client para conexao com API oficial do cartola",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thiago Dias",
+            "email": "tdias25@outlook.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cartola\\": "src"
+        }
+    }
+}
