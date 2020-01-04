@@ -10,6 +10,7 @@ Class Request
 	protected $http_code;
 	protected $method;
 	protected $cUrl;
+    protected $debugInfo;
 
 	public function sendRequest() {	
 
@@ -18,14 +19,26 @@ Class Request
 		curl_setopt($this->cUrl, CURLOPT_CUSTOMREQUEST, $this->method);
 		curl_setopt($this->cUrl, CURLOPT_URL, $this->url);
 		curl_setopt($this->cUrl, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($this->cUrl, CURLOPT_USERAGENT, 
-        'Mozilla/5.0 (Windows; U; Windows NT 5.1; rv:1.7.3) Gecko/20041001 Firefox/0.10.1');
+        curl_setopt($this->cUrl, CURLOPT_HTTPHEADER, array(
+            'User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; rv:1.7.3) Gecko/20041001 Firefox/0.10.1',
+            'Content-Type: application/json'
+        ));
 
-		$this->http_code = curl_getinfo($this->cUrl, CURLINFO_HTTP_CODE);
-		$this->response = curl_exec($this->cUrl);
+        $this->debugInfo = curl_getinfo($this->cUrl);
+
+        $this->response = curl_exec($this->cUrl);
+        $this->http_code = curl_getinfo($this->cUrl, CURLINFO_HTTP_CODE);
 
         curl_close($this->cUrl);
-	}
+    }
+
+    /**
+     * @return array
+     */
+    public function getDebugInfo()
+    {
+        return $this->debugInfo;
+    }
 
     /**
      * @return mixed
