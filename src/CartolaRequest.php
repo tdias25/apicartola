@@ -43,7 +43,7 @@ class CartolaRequest extends Request
      *
      * @return self
      */
-    public function setEndpoint($endpoint)
+    private function setEndpoint($endpoint)
     {
         $this->endpoint = $endpoint;
         $this->setUrl( $this->url . $endpoint );
