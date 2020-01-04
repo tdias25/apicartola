@@ -1,2 +1,2 @@
 # apicartola
-client simples para comunicação com api do cartola globo
+client simples para comunicação com api oficial do cartola globo
