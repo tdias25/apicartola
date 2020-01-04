@@ -24,8 +24,7 @@ Class Request
 		$this->http_code = curl_getinfo($this->cUrl, CURLINFO_HTTP_CODE);
 		$this->response = curl_exec($this->cUrl);
 
-        var_dump($this->http_code);
-		
+        curl_close($this->cUrl);
 	}
 
     /**
@@ -84,9 +83,4 @@ Class Request
 
     	return $this;
     }
-
-    public function __destruct() {
-    	curl_close($this->cUrl);
-    }
-
 }
