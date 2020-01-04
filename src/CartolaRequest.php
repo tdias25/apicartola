@@ -18,6 +18,9 @@ class CartolaRequest extends Request
 		$this->setUrl($this->base_url);
 	}
 
+    /**
+    * @return array
+    */
 	function getAtletas() {
 
 		$this->setEndpoint('/atletas/mercado')
@@ -25,6 +28,94 @@ class CartolaRequest extends Request
 
 		return $this->getResponse();
 	}
+
+    /**
+    * @return array
+    */
+    function getMercadoStatus() {
+
+        $this->setEndpoint('/mercado/status')
+        ->sendRequest();
+
+        return $this->getResponse();
+    }
+
+    /**
+    * @return array
+    */
+    function getPatrocinadores() {
+
+        $this->setEndpoint('/patrocinadores')
+        ->sendRequest();
+
+        return $this->getResponse();
+    }
+
+    /**
+    * @return array
+    */
+    function getRodadas() {
+
+        $this->setEndpoint('/rodadas')
+        ->sendRequest();
+
+        return $this->getResponse();
+    }
+
+    /**
+    * @return array
+    */
+    function getPartidas() {
+
+        $this->setEndpoint('/partidas')
+        ->sendRequest();
+
+        return $this->getResponse();
+    }
+
+    /**
+    * @return array
+    */
+    function getPartidasPorRodada($rodada) {
+
+        $this->setEndpoint("/partidas/{$rodada}")
+        ->sendRequest();
+
+        return $this->getResponse();
+    }
+
+    /**
+    * @return array
+    */
+    function getClubes() {
+
+        $this->setEndpoint('/clubes')
+        ->sendRequest();
+
+        return $this->getResponse();
+    }
+
+    /**
+    * @return array
+    */
+    function getAtletasPontuados() {
+
+        $this->setEndpoint('/atletas/pontuados')
+        ->sendRequest();
+
+        return $this->getResponse();
+    }
+
+    /**
+    * @return array
+    */
+    function getPontuacaoTimeRodadaAnterior() {
+
+        $this->setEndpoint('/pos-rodada/destaques')
+        ->sendRequest();
+
+        return $this->getResponse();
+    }
 
 	function getResponse() {
 		return json_decode($this->response, true);
